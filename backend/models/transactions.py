@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Date, Numeric
+from sqlalchemy import Column, Integer, String, Date, Numeric, Boolean, DateTime
 
 from database import Base
+from datetime import datetime
 
 class Transaction(Base):
     """Model for a financial transaction."""
@@ -19,5 +20,15 @@ class Transaction(Base):
     credit = Column(Numeric(12, 2))
 
     category = Column(String(100))
+
+    year = Column(Integer)
+
+    month = Column(Integer)
+
+    is_income = Column(Boolean, default=False)
+
+    is_subscription = Column(Boolean, default=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     
